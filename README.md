@@ -19,13 +19,10 @@
 
 **AI Public Opinion** 是一个生产级的开源舆情分析平台。它不仅是一个数据采集器，更是一个能够“思考”的分析师。通过整合 **Playwright 爬虫**、**本地 Embedding 模型** 和 **云端 LLM**，它能够从嘈杂的社交媒体噪音中提炼出结构化的核心观点。
 
-![Dashboard Preview](docs/images/dashboard_preview.png)
-*(系统仪表盘预览)*
-
 ## ✨ 核心特性
 
 ### 🌐 全网多源采集
-*   **X (Twitter)**: 突破性的 **Cookie 轮询账号池** 设计，支持自动滚动、评论递归抓取，具备工业级抗反爬能力。
+*   **X (Twitter)**: 采用 **Cookie 轮询账号池** 设计，支持自动滚动、评论递归抓取。
 *   **YouTube**: 创新性利用 **字幕 (Transcript)** 进行分析，避开了昂贵的音视频处理成本。
 *   **Reddit**: 双模采集引擎（官方 API + HTTP 降级），确保数据获取的高可用性。
 
@@ -166,15 +163,6 @@ flutter run -d windows
     *   包含：API Key 获取教程（X Cookie/YouTube API）、环境搭建步骤、生产环境配置建议。
 
 ---
-
-## 🤝 贡献指南
-
-我们欢迎任何形式的贡献！
-1.  Fork 本仓库
-2.  创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3.  提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4.  推送到分支 (`git push origin feature/AmazingFeature`)
-5.  提交 Pull Request
 
 ## 📄 许可证
 
