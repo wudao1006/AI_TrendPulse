@@ -11,7 +11,7 @@
 
 **多源采集 · 语义去重 · 情感计算 · 自动脑图**
 
-[核心特性](#-核心特性) • [系统架构](#-系统架构) • [快速开始](#-快速开始) • [技术文档](docs/technical_whitepaper.md)
+[核心特性](#-核心特性) • [系统架构](#-系统架构) • [快速开始](#-快速开始) • [技术文档](docs/技术框架说明.md)
 
 </div>
 
@@ -65,7 +65,7 @@ graph TD
     API <-->|Query| DB
 ```
 
-👉 **查看详细架构设计**: [技术白皮书 (Technical Whitepaper)](docs/technical_whitepaper.md)
+👉 **查看详细架构设计**: [技术框架说明 (Technical Whitepaper)](docs/技术框架说明.md)
 
 ---
 
@@ -156,13 +156,13 @@ flutter run -d windows
 
 我们为您准备了详尽的工程文档，帮助您深入理解系统内部原理：
 
-*   **📘 [技术架构白皮书](docs/technical_whitepaper.md)**
+*   **📘 [技术框架说明](docs/技术框架说明.md)**
     *   包含：系统设计原则、Micro-kernel 架构解析、数据库 Schema 设计。
-*   **🕷️ [数据采集技术内幕](docs/data_collection_guide.md)**
+*   **🕷️ [数据采集技术内幕](docs/数据采集.md)**
     *   包含：X (Twitter) 账号池与反爬策略、YouTube 字幕切片算法、Reddit 双模采集引擎。
-*   **🧠 [AI 分析深度指南](docs/ai_analysis_guide.md)**
+*   **🧠 [AI 分析深度指南](docs/AI分析.md)**
     *   包含：Prompt Engineering 细节、流式数据清洗、Embedding 智能采样算法、LLM 自愈机制。
-*   **🛠️ [完整运行与部署指南](docs/run_guidance.md)**
+*   **🛠️ [完整运行与部署指南](docs/运行说明.md)**
     *   包含：API Key 获取教程（X Cookie/YouTube API）、环境搭建步骤、生产环境配置建议。
 
 ---
