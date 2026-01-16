@@ -131,9 +131,9 @@ cd frontend
 flutter pub get
 
 # 2. 运行 (Web 或 Windows)
-flutter run -d chrome
+flutter run -d chrome --dart-define=API_KEY=你的API密钥 
 # 或
-flutter run -d windows
+flutter run -d windows --dart-define=API_KEY=你的API密钥 
 ```
 
 ---
