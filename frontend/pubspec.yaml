@@ -1,0 +1,44 @@
+name: ai_sentiment_app
+description: AI舆情分析系统 - 多源数据采集与智能分析
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # 状态管理
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+
+  # 网络请求
+  dio: ^5.4.0
+
+  # UI组件
+  fl_chart: ^0.66.0
+  flutter_markdown: ^0.6.18
+  webview_flutter: ^4.4.2
+  url_launcher: ^6.2.2
+  google_fonts: ^6.1.0
+
+  # 工具
+  intl: ^0.18.1
+  uuid: ^4.2.2
+
+  # 图标
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  riverpod_generator: ^2.3.9
+  build_runner: ^2.4.7
+
+flutter:
+  uses-material-design: true

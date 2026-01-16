@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  # -----------------------
+  # 1. 核心数据库
+  # -----------------------
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=ai_sentiment
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # -----------------------
+  # 2. 消息队列 & 缓存
+  # -----------------------
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # -----------------------
+  # 3. API 服务 (Backend)
+  # -----------------------
+  api:
+    build: ./backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./backend:/app  # 挂载代码以支持热重载
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/ai_sentiment
+      - REDIS_URL=redis://redis:6379/0
+      # 请在 .env 中配置以下敏感信息，或在此处填入
+      - API_KEY=${API_KEY:-secret}
+      - LLM_API_KEY=${LLM_API_KEY}
+      - LLM_API_BASE_URL=${LLM_API_BASE_URL}
+      - LLM_MODEL=${LLM_MODEL}
+      # Playwright 配置
+      - X_HEADLESS=true
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  # -----------------------
+  # 4. Celery Worker (计算节点)
+  # -----------------------
+  worker:
+    build: ./backend
+    # Linux (Docker) 环境下不需要 -P solo
+    command: celery -A app.workers.celery_app worker --loglevel=info
+    volumes:
+      - ./backend:/app
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/ai_sentiment
+      - REDIS_URL=redis://redis:6379/0
+      - API_KEY=${API_KEY:-secret}
+      - LLM_API_KEY=${LLM_API_KEY}
+      - LLM_API_BASE_URL=${LLM_API_BASE_URL}
+      - LLM_MODEL=${LLM_MODEL}
+      - X_HEADLESS=true
+    depends_on:
+      api:
+        condition: service_started
+
+volumes:
+  postgres_data:
+  redis_data:

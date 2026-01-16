@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / Build
+*.egg-info/
+.eggs/
+dist/
+build/
+develop-eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg
+MANIFEST
+
+# Environment Variables & Secrets (CRITICAL)
+.env
+.env.*
+!.env.example
+X.json
+accounts.json
+gcloud_key.json
+
+# Unit Test / Coverage
+.pytest_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Logs
+*.log
+logs/
+
+# Local Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Playwright
+test-results/
+.playwright-artifacts/
